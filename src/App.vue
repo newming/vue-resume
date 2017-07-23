@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" ref='app'>
     <StyleEditor :code='showStyle' ref='styleEditor'></StyleEditor>
     <InfoEditor ref='infoEditor' :info='showInfo' :rawContent='rawContent'></InfoEditor>
   </div>
@@ -14,7 +14,7 @@ export default {
   name: 'app',
   data(){
     return {
-      interval: 40,
+      interval: 30,
       showStyle: '', // 传给子组件展示的style
       fullStyle: styleCode, // 完整的style数组
       showInfo: '',
@@ -53,7 +53,7 @@ export default {
             if (char === '\n' && this.$refs.styleEditor) {
               // console.log('换行了');
               this.$nextTick(() => {
-                this.$refs.styleEditor.goBottom()
+                this.$refs.styleEditor.goBottom();
               })
             }
   					setTimeout(addStyle, this.interval);
